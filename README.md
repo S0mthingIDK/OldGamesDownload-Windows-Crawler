@@ -571,8 +571,9 @@ OldGamesDownload-Windows-Crawler/
 │   ├── review.py            # interactive review
 │   ├── server.py            # FastAPI web UI
 │   └── logging_setup.py     # JSON-lines logger
-├── test_parser.py
-├── test_export.py
+├── tests/
+│   ├── test_parser.py
+│   └── test_export.py
 ├── oldgames.db              # (created at runtime)
 ├── oldgames.log.jsonl       # (created at runtime)
 ├── debug_html/              # (created at runtime, last-seen HTML)
