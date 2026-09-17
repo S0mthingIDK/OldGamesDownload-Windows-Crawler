@@ -1,0 +1,21 @@
+# Runtime artifacts
+oldgames.db
+oldgames.db-wal
+oldgames.db-shm
+oldgames.log.jsonl
+debug_html/
+_curl_tmp.html
+oldgames.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

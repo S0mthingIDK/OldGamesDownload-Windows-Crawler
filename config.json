@@ -1,0 +1,13 @@
+{
+  "base_url": "https://oldgamesdownload.com/platform/windows/",
+  "delay_seconds": 1.5,
+  "timeout_seconds": 60,
+  "user_agent": "OldGamesMetadataCrawler/1.0",
+  "retries": 3,
+  "retry_delay_seconds": 3,
+  "db_path": "oldgames.db",
+  "log_path": "oldgames.log.jsonl",
+  "max_workers": 6,
+  "stale_after_days": 30,
+  "append_version_suffix": false
+}
