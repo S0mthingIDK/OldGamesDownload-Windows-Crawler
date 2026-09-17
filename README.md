@@ -81,7 +81,7 @@ oldgames.json                             (Hydra-compatible)
 ## Setup
 
 ```powershell
-cd D:\test\oldgames_hydra_source
+cd D:\test\OldGamesDownload-Windows-Crawler (or wherever you want to put it)
 pip install -r requirements.txt
 ```
 
@@ -552,7 +552,7 @@ Useful for offline analysis of failure rates and slow URLs.
 ## Project layout
 
 ```text
-oldgames_hydra_source/
+OldGamesDownload-Windows-Crawler/
 ├── scraper.py               # entry shim
 ├── config.json
 ├── requirements.txt
