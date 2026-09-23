@@ -1,106 +1,45 @@
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                            ASCII ART BANNER                            -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=OldGamesDownload&fontSize=52&fontColor=ffffff&fontAlign=50&fontAlignY=38&desc=Windows%20Metadata%20Crawler&descAlign=50&descAlignY=58&descSize=18&animation=fadeIn" alt="OldGamesDownload Windows Metadata Crawler" width="100%" />
+</p>
 
-```text
-   ___  _     _    ___             _                ___      _                
-  / _ \| | __| |  / __| __ _ _ __ | |_ ___ _ __    / __|_ _(_)_ __ _  _ _ __  
- | (_) | |/ _` | | (_ |/ _` | '  \| ' \/ _ \ '  \  | (_ | '_| | '  \ || | '  \ 
-  \___/|_|\__,_|  \___|\__,_|_|_|_|_||_\___/_|_|_|  \___|_| |_|_|_|_\_,_|_|_|_|
-```
+<p align="center">
+  <a href="https://github.com/S0mthingIDK/OldGamesDownload-Windows-Crawler">
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=36BCF7&center=true&vCenter=true&width=700&lines=Crawl+the+entire+OldGamesDownload+catalog;Capture+MediaFire+mirror+URLs+automatically;Export+Hydra-compatible+JSON;Resumable%2C+parallel%2C+and+fast" alt="Typing SVG" />
+  </a>
+</p>
 
-<div align="center">
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e?style=flat-square" alt="MIT License"></a>
+  <a href="https://www.microsoft.com/windows"><img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows&logoColor=white" alt="Windows"></a>
+  <a href="https://github.com/S0mthingIDK/OldGamesDownload-Windows-Crawler/actions"><img src="https://img.shields.io/github/actions/workflow/status/S0mthingIDK/OldGamesDownload-Windows-Crawler/tests.yml?style=flat-square&label=Tests" alt="Tests"></a>
+  <a href="https://github.com/S0mthingIDK/OldGamesDownload-Windows-Crawler"><img src="https://img.shields.io/github/stars/S0mthingIDK/OldGamesDownload-Windows-Crawler?style=flat-square&logo=github&color=yellow" alt="GitHub Stars"></a>
+</p>
 
-**Harvest the OldGamesDownload Windows catalog → SQLite → Hydra-compatible JSON**
-
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/S0mthingIDK/OldGamesDownload-Windows-Crawler/actions)
-[![Hydra](https://img.shields.io/badge/output-Hydra%20JSON-orange)](https://github.com/hydralauncher/hydra)
-
-</div>
-
----
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                              TABLE OF CONTENTS                          -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
-## 📑 Table of contents
-
-<details open>
-<summary><b>Click to expand / collapse</b></summary>
-
-- [What it does](#-what-it-does)
-- [Pipeline](#-pipeline)
-- [Requirements](#-requirements)
-- [Setup](#-setup)
-- [Quick start](#-quick-start)
-- [Commands](#-commands)
-  - [`crawl`](#crawl)
-  - [`page-count`](#page-count)
-  - [`pages` / `pages-clear`](#pages--pages-clear)
-  - [`check-mirrors`](#check-mirrors)
-  - [`list`](#list)
-  - [`find`](#find)
-  - [`stats` / `report` / `duplicates`](#stats--report--duplicates)
-  - [`status` / `add-uri` / `cleanup`](#status--add-uri--cleanup)
-  - [`review`](#review)
-  - [`export`](#export)
-  - [`serve`](#serve)
-- [Configuration](#-configuration)
-- [Environment variables](#-environment-variables)
-- [Database schema](#-database-schema)
-- [Hydra JSON format](#-hydra-json-format)
-- [Multi-version games](#-multi-version-games)
-- [Web UI](#-web-ui)
-- [Logs](#-logs)
-- [Crawl resilience](#-crawl-resilience)
-- [Project layout](#-project-layout)
-
-</details>
+<p align="center">
+  <a href="#-what-it-does">What it does</a> ·
+  <a href="#-quick-start">Quick start</a> ·
+  <a href="#-commands">Commands</a> ·
+  <a href="#-configuration">Configuration</a> ·
+  <a href="#-web-ui">Web UI</a> ·
+  <a href="#-project-layout">Project layout</a>
+</p>
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                               WHAT IT DOES                              -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🎯 What it does
 
-<div align="center">
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=6,20&height=3&section=header" width="60%" />
+</p>
 
-```
-  ┌─────────────────────────────────────────────────────────────────────┐
-  │                                                                     │
-  │   1.  Crawl every catalog page                                      │
-  │   2.  Extract game metadata + Windows file info                     │
-  │   3.  Capture MediaFire mirror URLs                                 │
-  │   4.  Store in SQLite (resumable, parallel)                         │
-  │   5.  Export a Hydra-compatible JSON catalog                        │
-  │                                                                     │
-  └─────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-1. Crawls every catalog page of the OldGamesDownload Windows section.
-2. Visits each game page and extracts title, release year, description,
-   and every Windows download file (name + size).
-3. Visits each download file page and captures the MediaFire mirror URL
-   (if present) plus a MEGA availability flag.
-4. Stores everything in a local SQLite database (`oldgames.db`) using WAL
-   mode and batched writes.
-5. Exports a Hydra-shaped JSON catalog with MediaFire URLs as the primary
-   `uris`, falling back to the OldGamesDownload file-page URL when no
-   MediaFire mirror exists.
+1. **Crawls** every catalog page of the OldGamesDownload Windows section.
+2. **Extracts** game metadata — title, release year, description, and every Windows download file (name + size).
+3. **Captures** the MediaFire mirror URL (if present) plus a MEGA availability flag.
+4. **Stores** everything in a local SQLite database (`oldgames.db`) using WAL mode and batched writes.
+5. **Exports** a Hydra-shaped JSON catalog with MediaFire URLs as the primary `uris`, falling back to the OldGamesDownload file-page URL when no MediaFire mirror exists.
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                                 PIPELINE                                -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🔄 Pipeline
 
@@ -134,10 +73,6 @@
 
 ---
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                               REQUIREMENTS                               -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
 ## 📦 Requirements
 
 | | Requirement |
@@ -148,10 +83,6 @@
 
 ---
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                                  SETUP                                  -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
 ## ⚙️ Setup
 
 ```powershell
@@ -159,14 +90,9 @@ cd D:\test\OldGamesDownload-Windows-Crawler   # or wherever you cloned it
 pip install -r requirements.txt
 ```
 
-> 💡 The database (`oldgames.db`) is created automatically the first time you
-> run any command that touches it.
+> 💡 The database (`oldgames.db`) is created automatically the first time you run any command that touches it.
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                               QUICK START                               -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🚀 Quick start
 
@@ -182,33 +108,21 @@ python scraper.py stats
 python scraper.py export --output oldgames.json
 ```
 
-<div align="center">
-
-### 🕷️ The crawler in action
-
-![crawl --all progress](doc/screanshots/crawl-progress.png)
-
-*Live progress: catalog page tracker + per-game results, with a final crawl summary.*
-
-</div>
+<p align="center">
+  <img src="doc/screanshots/crawl-progress.png" alt="crawl --all progress" width="90%" />
+  <br>
+  <em>Live progress: catalog page tracker + per-game results, with a final crawl summary.</em>
+</p>
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                                 COMMANDS                                -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🎮 Commands
 
 ### `crawl`
 
-Crawls catalog pages and game pages in parallel, upserts rows, and (by
-default) captures MediaFire URLs.
+Crawls catalog pages and game pages in parallel, upserts rows, and (by default) captures MediaFire URLs.
 
-You can either specify an explicit page range with `--pages N`, or use
-`--all` to let the crawler detect the last page automatically. When
-`--all` is used, previously crawled pages are skipped (see
-[Resumable crawls](#-resumable-crawls)).
+You can either specify an explicit page range with `--pages N`, or use `--all` to let the crawler detect the last page automatically. When `--all` is used, previously crawled pages are skipped (see [Resumable crawls](#-resumable-crawls)).
 
 | Flag | Default | Description |
 |------|---------|-------------|
@@ -238,26 +152,17 @@ python scraper.py crawl --all
 
 `--all` works like this:
 
-1. Fetches page 1, reads the pagination links, and computes the highest page
-   number the site currently reports.
-2. Skips pages already crawled within `stale_after_days` (default 30) —
-   see [Resumable crawls](#-resumable-crawls).
+1. Fetches page 1, reads the pagination links, and computes the highest page number the site currently reports.
+2. Skips pages already crawled within `stale_after_days` (default 30) — see [Resumable crawls](#-resumable-crawls).
 3. Crawls the remaining pages sequentially.
-4. **Extends the target automatically** if later pages reveal a higher page
-   number (sites sometimes grow while you crawl).
-5. **Stops early** after two consecutive empty catalog pages, or three
-   consecutive failed fetches — so a site hiccup doesn't cause an infinite
-   loop.
-6. **Hard safety cap** of 2000 pages in case pagination is ever broken.
+4. **Extends the target automatically** if later pages reveal a higher page number.
+5. **Stops early** after two consecutive empty catalog pages, or three consecutive failed fetches.
+6. **Hard safety cap** of 2000 pages.
 
 **Resume after a break**
 
 ```powershell
-# First run, interrupted at page 125
-python scraper.py crawl --all
-
-# Next day: automatically continues from page 126
-python scraper.py crawl --all
+python scraper.py crawl --all          # resumes at the next unfinished page
 ```
 
 **Force a full re-crawl**
@@ -270,49 +175,37 @@ python scraper.py crawl --all --refresh
 
 ### Resumable crawls
 
-Every catalog page that is crawled successfully is recorded in the
-`catalog_pages` table along with a timestamp and how many games were found.
+Every catalog page that is crawled successfully is recorded in the `catalog_pages` table along with a timestamp and how many games were found.
 
-On the next `crawl --all`, pages crawled within `stale_after_days` are
-skipped, and only the remaining pages are fetched. This means:
+On the next `crawl --all`, pages crawled within `stale_after_days` are skipped, and only the remaining pages are fetched.
 
 - Stopping at page 125 and re-running `crawl --all` resumes at page 126.
 - Partial pages (fetched OK but with some game failures) are re-attempted.
-- Pages older than `stale_after_days` are re-crawled automatically to pick
-  up any changes on the site.
-- `--refresh` forces every page in range to be re-crawled regardless of
-  the cache.
-- `--pages N` (explicit range) still re-crawls those pages by default —
-  pass `--resume` to skip them instead.
-
-Toggle the cache or inspect it with the [`pages`](#pages--pages-clear)
-and [`pages-clear`](#pages--pages-clear) commands.
+- Pages older than `stale_after_days` are re-crawled automatically.
+- `--refresh` forces every page in range to be re-crawled regardless of the cache.
+- `--pages N` (explicit range) still re-crawls those pages by default — pass `--resume` to skip them instead.
 
 ---
 
 ### `page-count`
 
-Probes the site and prints how many catalog pages currently exist, plus a
-comparison against your local crawl progress.
+Probes the site and prints how many catalog pages currently exist, plus a comparison against your local crawl progress.
 
 ```powershell
 python scraper.py page-count
 ```
 
-<div align="center">
-
-![page-count output](doc/screanshots/page-count.png)
-
-*Shows total pages on the site, how many you've already crawled, and how many remain.*
-
-</div>
+<p align="center">
+  <img src="doc/screanshots/page-count.png" alt="page-count output" width="80%" />
+  <br>
+  <em>Shows total pages on the site, how many you've already crawled, and how many remain.</em>
+</p>
 
 ---
 
 ### `pages` / `pages-clear`
 
-`pages` shows every catalog page you've crawled, when it was last touched,
-and how many games it yielded.
+`pages` shows every catalog page you've crawled, when it was last touched, and how many games it yielded.
 
 ```powershell
 python scraper.py pages
@@ -335,8 +228,7 @@ Crawled pages (125)
 | ✅ `ok` | Page and all its games fetched cleanly |
 | ⚠️ `partial` | Page fetched but at least one game on it failed |
 
-`pages-clear` wipes the page cache so the next `crawl --all` starts from
-scratch (the game and file data itself is untouched).
+`pages-clear` wipes the page cache so the next `crawl --all` starts from scratch (the game and file data itself is untouched).
 
 ```powershell
 python scraper.py pages-clear
@@ -374,17 +266,15 @@ python scraper.py list --status approved
 python scraper.py list -v          # show files per game
 ```
 
-<div align="center">
+<p align="center">
+  <strong>Default view</strong><br>
+  <img src="doc/screanshots/list.png" alt="list output" width="90%" />
+</p>
 
-**Default view**
-
-![list output](doc/screanshots/list.png)
-
-**Verbose view (`-v`) — shows every file plus its MediaFire URL**
-
-![list -v output](doc/screanshots/list-verbose.png)
-
-</div>
+<p align="center">
+  <strong>Verbose view (<code>-v</code>) — shows every file plus its MediaFire URL</strong><br>
+  <img src="doc/screanshots/list-verbose.png" alt="list -v output" width="90%" />
+</p>
 
 ---
 
@@ -408,13 +298,11 @@ python scraper.py report        # mirror coverage report with percentages
 python scraper.py duplicates    # same filename under multiple games
 ```
 
-<div align="center">
-
-![stats output](doc/screanshots/stats.png)
-
-*Quick database totals plus a breakdown by review status.*
-
-</div>
+<p align="center">
+  <img src="doc/screanshots/stats.png" alt="stats output" width="70%" />
+  <br>
+  <em>Quick database totals plus a breakdown by review status.</em>
+</p>
 
 ---
 
@@ -464,10 +352,6 @@ Then open <http://127.0.0.1:8000>. See [Web UI](#-web-ui).
 
 ---
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                              CONFIGURATION                              -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
 ## 🛠️ Configuration
 
 `config.json` at the project root:
@@ -509,14 +393,7 @@ Then open <http://127.0.0.1:8000>. See [Web UI](#-web-ui).
 - 🗂️ **Catalog page skip list** (used by `crawl --all` and `--resume`)
 - 🔁 **Mirror check freshness** (used by `check-mirrors --skip-checked`)
 
-Raise it if you want longer memory, lower it if you want more frequent
-refreshes.
-
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                          ENVIRONMENT VARIABLES                          -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🌍 Environment variables
 
@@ -529,13 +406,7 @@ $env:OGD_STALE_AFTER_DAYS = "7"
 python scraper.py crawl --all
 ```
 
-Useful for CI or running against a scratch DB.
-
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                             DATABASE SCHEMA                             -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🗄️ Database schema
 
@@ -599,16 +470,11 @@ Used by `crawl --all` / `--resume`.
 
 </details>
 
-**Indexes:** `status`, `game_id`, `mirror_checked_at`,
-`file_name COLLATE NOCASE`, `catalog_pages.last_crawled_at`.
+**Indexes:** `status`, `game_id`, `mirror_checked_at`, `file_name COLLATE NOCASE`, `catalog_pages.last_crawled_at`.
 
 **WAL mode** and **`synchronous = NORMAL`** are enabled automatically.
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                            HYDRA JSON FORMAT                            -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🎮 Hydra JSON format
 
@@ -628,14 +494,9 @@ Used by `crawl --all` / `--resume`.
 
 ---
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                          MULTI-VERSION GAMES                            -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
 ## 🧩 Multi-version games
 
-By default, all files for a game share the same plain `title`, so Hydra
-shows **one** game with multiple download options:
+By default, all files for a game share the same plain `title`, so Hydra shows **one** game with multiple download options:
 
 ```json
 { "title": "Blur", "uris": ["…/hfkll95e849pydk/…"], "fileSize": "3.95 GB" },
@@ -643,8 +504,7 @@ shows **one** game with multiple download options:
 { "title": "Blur", "uris": ["…/2lgns1daibdwvl4/…"], "fileSize": "3.87 GB" }
 ```
 
-Set `append_version_suffix: true` in `config.json` to emit one entry per
-version with a `(version label)` suffix instead:
+Set `append_version_suffix: true` in `config.json` to emit one entry per version with a `(version label)` suffix instead:
 
 ```json
 { "title": "Blur (ElAmigos Repack EN.FR.DE.ES.IT.PL)", … },
@@ -653,10 +513,6 @@ version with a `(version label)` suffix instead:
 ```
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                                 WEB UI                                  -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🌐 Web UI
 
@@ -668,11 +524,9 @@ python scraper.py serve --host 127.0.0.1 --port 8000
 
 Then open <http://127.0.0.1:8000> in your browser.
 
-<div align="center">
-
-![Web UI](doc/screanshots/web-ui.png)
-
-</div>
+<p align="center">
+  <img src="doc/screanshots/web-ui.png" alt="Web UI" width="90%" />
+</p>
 
 **Features**
 
@@ -686,10 +540,6 @@ Then open <http://127.0.0.1:8000> in your browser.
 
 ---
 
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                                   LOGS                                  -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-
 ## 📝 Logs
 
 Every HTTP request is appended to `oldgames.log.jsonl`:
@@ -699,34 +549,20 @@ Every HTTP request is appended to `oldgames.log.jsonl`:
 {"ts":"2026-01-01T12:00:01+00:00","url":"...","status":"error","code":28,"category":"timeout","error":"..."}
 ```
 
-Useful for offline analysis of failure rates and slow URLs.
-
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                            CRAWL RESILIENCE                             -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 🛡️ Crawl resilience
 
 - ⚡ **Parallel workers** (default 6) with a shared per-host rate limiter.
 - 🔁 **Exponential backoff** on retries (handles transient 429/503-style issues).
 - 🚫 **Failed pages are logged and skipped**, never aborting the whole run.
-- 💾 **Resumable crawls**: pages crawled successfully are cached in the
-  `catalog_pages` table and skipped on subsequent `crawl --all` runs,
-  so interrupting and re-running picks up where you left off.
-- 🧭 `--all` mode **auto-detects the last page** and extends the target if the
-  site reveals more pages mid-crawl.
-- 🛑 `--all` mode also **stops early** after consecutive empty pages or failed
-  fetches, and enforces a 2000-page hard cap.
+- 💾 **Resumable crawls**: pages crawled successfully are cached in the `catalog_pages` table and skipped on subsequent `crawl --all` runs.
+- 🧭 `--all` mode **auto-detects the last page** and extends the target if the site reveals more pages mid-crawl.
+- 🛑 `--all` mode also **stops early** after consecutive empty pages or failed fetches, and enforces a 2000-page hard cap.
 - ⏭️ `--skip-checked` on `check-mirrors` allows fast incremental refreshes.
 - 🗃️ **WAL SQLite + batched writes** keep concurrent writes lock-free in practice.
 
 ---
-
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                             PROJECT LAYOUT                              -->
-<!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 ## 📁 Project layout
 
@@ -772,16 +608,11 @@ Both print `PASS` on success and exit non-zero on failure.
 
 ---
 
-<div align="center">
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=140&section=footer&text=Built%20for%20the%20Hydra%20community&fontSize=24&fontColor=ffffff&fontAlign=50&fontAlignY=45&animation=fadeIn" width="100%" />
+</p>
 
-```
-  ╔══════════════════════════════════════════════════════════════════╗
-  ║                                                                  ║
-  ║   Built for the Hydra community · Powered by Python & SQLite     ║
-  ║                                                                  ║
-  ║              ⭐ Star the repo if you find it useful ⭐           ║
-  ║                                                                  ║
-  ╚══════════════════════════════════════════════════════════════════╝
-```
-
-</div>
+<p align="center">
+  <a href="https://github.com/S0mthingIDK/OldGamesDownload-Windows-Crawler/stargazers"><img src="https://img.shields.io/badge/⭐_Star_the_repo-ffdd00?style=for-the-badge" alt="Star the repo"></a>
+  <a href="https://github.com/S0mthingIDK/OldGamesDownload-Windows-Crawler/issues"><img src="https://img.shields.io/badge/🐛_Report_an_issue-red?style=for-the-badge" alt="Report an issue"></a>
+</p>
